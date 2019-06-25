@@ -14,8 +14,8 @@ steps:
     - mkdir -p ~/.ssh
     - echo "$SSH_PRIV_KEY" | ssh-add -
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
-    - git config --global user.email "${DRONE_COMMIT_AUTHOR_NAME}"
+      #- git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
+      #- git config --global user.email "${DRONE_COMMIT_AUTHOR_NAME}"
 
 - name: job-pdfid
   image: cincan/pdfid

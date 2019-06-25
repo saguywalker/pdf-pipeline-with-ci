@@ -4,7 +4,8 @@ SAMPLESPATH=$(pwd)
 ls $SAMPLESPATH/pdf/ -R
 
 # Do nothing if folder is empty
-number_of_files=$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)
+#number_of_files=$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)
+number_of_files=$(ls $SAMPLESPATH/pdf |wc -l)
 if [[ "$number_of_files" == 0 ]]; then
 	echo "Folder is empty"
 else

@@ -30,7 +30,8 @@ else
 	cat $OUTPUTPATH/sctest_log
 	cd $ORIGSAMPLESPATH/
 	git add .
-  #git config --global user.name "${GITLAB_USER_ID}"
-	#git config --global user.email "${GITLAB_USER_EMAIL}"
+  env
+  git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
 	git commit -m "Results update"
 fi
