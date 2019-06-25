@@ -20,23 +20,19 @@ steps:
   commands:
     - ls -R
     - /bin/sh pdfid.sh
-      #- docker pull cincan/pdfid
-      #- docker run -v "${PWD}:/pdf-source" -e SSH_PRIV_KEY="${SSH_PRIV_KEY}" -e GITLAB_USER_EMAIL="${DRONE_COMMIT_AUTHOR_EMAIL}" -e GITLAB_USER_ID="${DRONE_COMMIT_AUTHOR_NAME}" --entrypoint "/bin/sh" cincan/pdfid /pdf-source/pdfid.sh
 
 - name: job-peepdf
   image: cincan/peepdf
   commands:
     - ls -R
     - /bin/bash peepdf-vt.sh
-      #- docker pull cincan/peepdf
-      #- docker run -v "${PWD}:/pdf-source" -e SSH_PRIV_KEY="${SSH_PRIV_KEY}" -e GITLAB_USER_EMAIL="${DRONE_COMMIT_AUTHOR_EMAIL}" -e GITLAB_USER_ID="${DRONE_COMMIT_AUTHOR_NAME}" --entrypoint "/bin/bash" cincan/peepdf /pdf-source/peepdf-vt.sh
 
 - name: jsunpackn
   image: cincan/jsunpack-n
   commands:
-    - /bin/bash results/jsunpackn.sh
+    - /bin/bash jsunpackn.sh
 
 - name: sctest
   image: cincan/peepdf
   commands:
-    - /bin/bash results/sctest.sh
+    - /bin/bash sctest.sh
