@@ -2,8 +2,8 @@
 SAMPLESPATH=$(pwd)
 #ls $SAMPLESPATH/pdf-source/ -R
 ls $SAMPLESPATH -R
-#git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
-#git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
+git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
 #git remote set-url --push origin git@github.com:${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}.git
 #git pull origin master
 # Do nothing if folder is empty
