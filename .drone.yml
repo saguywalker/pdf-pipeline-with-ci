@@ -37,6 +37,9 @@ steps:
 
 - name: sctest
   image: cincan/peepdf
+  environment:
+    SSH_PRIV_KEY:
+      from_secret: SSH_PRIV_KEY
   commands:
     - /bin/bash sctest.sh
     - eval $(ssh-agent -s)
