@@ -14,7 +14,9 @@ name: stage-1
 step:
 - name: pdfid
   #image: cincan/pdfid
+  image: docker
   commands:
+    - echo "test"
     - docker pull cincan/pdfid
     - docker run -v "${PWD}:/pdf-source" -e SSH_PRIV_KEY="${SSH_PRIV_KEY}" -e GITLAB_USER_EMAIL="${DRONE_COMMIT_AUTHOR_EMAIL}" -e GITLAB_USER_ID="${DRONE_COMMIT_AUTHOR_NAME}" --entrypoint "/bin/sh" cincan/pdfid /pdf-source/pdfid.sh
 
@@ -24,6 +26,7 @@ step:
     SSH_PRIV_KEY:
       from_secret: SSH_PRIV_KEY
   commands:
+    - echo "test"
     - docker pull cincan/peepdf
     - docker run -v "${PWD}:/pdf-source" -e SSH_PRIV_KEY="${SSH_PRIV_KEY}" -e GITLAB_USER_EMAIL="${DRONE_COMMIT_AUTHOR_EMAIL}" -e GITLAB_USER_ID="${DRONE_COMMIT_AUTHOR_NAME}" --entrypoint "/bin/bash" cincan/peepdf /pdf-source/peepdf-vt.sh
 
