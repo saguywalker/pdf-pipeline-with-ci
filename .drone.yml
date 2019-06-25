@@ -34,9 +34,9 @@ steps:
 - name: jsunpackn
   image: cincan/jsunpack-n
   commands:
-    - /bin/bash/ results/jsunpackn.sh
+    - /bin/bash results/jsunpackn.sh
 
 - name: sctest
   image: cincan/peepdf
   commands:
-    - /bin/bash/ results/sctest.sh
+    - /bin/bash results/sctest.sh

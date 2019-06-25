@@ -1,30 +1,17 @@
 #!/bin/bash
-
-which ssh-agent || (apk add --update openssh-client)
-eval $(ssh-agent -s)
-mkdir -p ~/.ssh
-echo "$SSH_PRIV_KEY" | ssh-add -
-echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-git config --global user.email "$GITLAB_USER_EMAIL"
-git config --global user.name  "$GITLAB_USER_ID"
-#git remote set-url --push origin git@gitlab.com:${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}.git
-
 SAMPLESPATH=$(pwd)
-mkdir -p ${SAMPLESPATH}/output-files/results
-cd $SAMPLESPATH/output-files
-git init
-git remote add origin git@gitlab.com:${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}.git
-#git remote set-url --push origin git@gitlab.com:${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}.git
-git pull origin master
-ls $SAMPLESPATH/pdf-source/ -R
+#ls $SAMPLESPATH/pdf-source/ -R
+ls $SAMPLESPATH -R
 
 # Do nothing if folder is empty
-if (( "$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)" == 0 )); then
+#if (( "$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)" == 0 )); then
+if (( "$(ls $SAMPLESPATH/pdf |wc -l)" == 0 )); then
 	echo "Folder is empty"
 else
 	echo "Processing files"
 	cd /peepdf
-	for file in $SAMPLESPATH/pdf-source/pdf/*
+	#for file in $SAMPLESPATH/pdf-source/pdf/*
+	for file in $SAMPLESPATH/pdf/*
         do
           xbase=${file##*/}; xfext=${xbase##*.}; xpref=${xbase%.*}
           echo Analysing: ${file##*/}
@@ -35,16 +22,18 @@ else
 
 	# Update the results-git
 	cd $SAMPLESPATH
+	ls $SAMPLESPATH -R
 	#git clone results output-files
 
-	cd $SAMPLESPATH/output-files
-	cp $SAMPLESPATH/*.log $SAMPLESPATH/output-files/results/
+	#cd $SAMPLESPATH/output-files
+	cp $SAMPLESPATH/*.log $SAMPLESPATH/results/
+	#cp $SAMPLESPATH/*.log $SAMPLESPATH/output-files/results/
 
+	#git pull
 	git add .
-	#git config --global user.name "cincan-pipeline"
-	#git config --global user.email "cincan@concourse"
-	git commit -m "[skip ci] update peepdf results"
-  git push -u origin master
-fi
+	#git config --global user.name "${GITLAB_USER_ID}"
+	#git config --global user.email "${GITLAB_USER_EMAIL}"
+	#git commit -m "update peepdf results"
 
+fi
 
