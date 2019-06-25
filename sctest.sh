@@ -13,7 +13,7 @@ else
 	  do
 	    printf "Working on folder: "${folder}"\n" >> $OUTPUTPATH/sctest_log
 
-	    SAMPLESPATH=${folder}
+	    SAMPLESPATH=${folder%}
 	    cd /peepdf
 
 	    for file in $SAMPLESPATH/*

@@ -42,10 +42,11 @@ steps:
       from_secret: SSH_PRIV_KEY
   commands:
     - /bin/bash sctest.sh
-    - 
-    - eval $(ssh-agent -s)
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIV_KEY" | ssh-add -
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+      #- eval $(ssh-agent -s)
+      #- mkdir -p ~/.ssh
+      #- echo "$SSH_PRIV_KEY" | ssh-add -
+      #- echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - git branch -a
     - git status
-    - git push origin HEAD:master
+    - git config --global push.default "matching"
+    - git push
