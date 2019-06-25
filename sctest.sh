@@ -30,8 +30,8 @@ else
 	cat $OUTPUTPATH/sctest_log
 	cd $ORIGSAMPLESPATH/
 	git add .
-  #git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
-	#git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
+  git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
 	git commit -m "Results update"
   #git config --global push.default matching
 fi

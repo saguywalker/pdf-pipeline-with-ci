@@ -39,4 +39,5 @@ steps:
   image: cincan/peepdf
   commands:
     - /bin/bash sctest.sh
-    - git push origin HEAD:master
+    - git push
+      #- git push origin HEAD:master

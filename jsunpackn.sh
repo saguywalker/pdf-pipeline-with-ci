@@ -21,7 +21,7 @@ else
 	#cd $SAMPLESPATH/output-files
   cd $SAMPLESPATH
 	git add .
-	#git config --global user.name "${GITLAB_USER_ID}"
-	#git config --global user.email "${GITLAB_USER_EMAIL}"
+	git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
 	git commit -m "update jsunpack-n results"
 fi
