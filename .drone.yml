@@ -38,3 +38,6 @@ steps:
   image: cincan/peepdf
   commands:
     - /bin/bash sctest.sh
+    - git status
+    - git config --global push.default matching
+    - git push
