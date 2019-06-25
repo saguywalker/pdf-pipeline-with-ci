@@ -14,7 +14,7 @@ name: stage-1
 step:
 - name: pdfid
   #image: cincan/pdfid
-  image: docker
+  image: alpine
   commands:
     - echo "test"
     - docker pull cincan/pdfid
