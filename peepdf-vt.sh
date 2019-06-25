@@ -2,7 +2,10 @@
 SAMPLESPATH=$(pwd)
 #ls $SAMPLESPATH/pdf-source/ -R
 ls $SAMPLESPATH -R
-
+git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
+git remote set-url --push origin git@github.com:${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}.git
+git pull origin master
 # Do nothing if folder is empty
 #if (( "$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)" == 0 )); then
 if (( "$(ls $SAMPLESPATH/pdf |wc -l)" == 0 )); then
@@ -33,7 +36,7 @@ else
 	git add .
 	#git config --global user.name "${GITLAB_USER_ID}"
 	#git config --global user.email "${GITLAB_USER_EMAIL}"
-	#git commit -m "update peepdf results"
-
+	git commit -m "update peepdf results"
+  git pull origin HEAD:master
 fi
 

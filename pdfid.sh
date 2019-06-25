@@ -2,7 +2,10 @@
 SAMPLESPATH=$(pwd)
 #ls $SAMPLESPATH/pdf-source/ -R
 ls $SAMPLESPATH/pdf/ -R
-
+git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAI}"
+git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+git remote set-url --push origin git@github.com:${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME}.git
+git pull origin master
 # Do nothing if folder is empty
 #number_of_files=$(ls $SAMPLESPATH/pdf-source/pdf |wc -l)
 number_of_files=$(ls $SAMPLESPATH/pdf |wc -l)
@@ -54,5 +57,6 @@ else
   git add .
 	git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
   git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAI}"
-	#git commit -m "update pdfid results"
+	git commit -m "update pdfid results"
+  git push origin HEAD:master
 fi
