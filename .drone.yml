@@ -24,6 +24,7 @@ step:
 
 depends_on:
   - stage-0
+
 ---
 kind: pipeline
 name: stage-2
@@ -36,6 +37,7 @@ step:
 
 depends_on:
   - stage-1
+
 ---
 kind: pipeline
 name: stage-3
@@ -48,4 +50,3 @@ step:
 
 depends_on:
   - stage-2
----
