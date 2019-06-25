@@ -37,6 +37,6 @@ else
 	#git config --global user.name "${GITLAB_USER_ID}"
 	#git config --global user.email "${GITLAB_USER_EMAIL}"
 	git commit -m "update peepdf results"
-  git pull origin HEAD:master
+  git push origin master
 fi
 

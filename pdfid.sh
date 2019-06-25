@@ -58,5 +58,5 @@ else
 	git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
   git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAI}"
 	git commit -m "update pdfid results"
-  git push origin HEAD:master
+  git push origin master
 fi
