@@ -14,7 +14,10 @@ steps:
     - mkdir -p ~/.ssh
     - echo "$SSH_PRIV_KEY" | ssh-add -
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-
+    - git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
+    - git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
+    - git remote set-url --push origin "${DRONE_GIT_SSH_URL}"
+    - git pull origin master
 - name: job-pdfid
   image: cincan/pdfid
   commands:
@@ -36,3 +39,4 @@ steps:
   image: cincan/peepdf
   commands:
     - /bin/bash sctest.sh
+    - git push origin HEAD:master

@@ -23,5 +23,5 @@ else
 	git add .
 	#git config --global user.name "${GITLAB_USER_ID}"
 	#git config --global user.email "${GITLAB_USER_EMAIL}"
-	#git commit -m "update jsunpack-n results"
+	git commit -m "update jsunpack-n results"
 fi
