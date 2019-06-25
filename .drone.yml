@@ -1,0 +1,51 @@
+kind: pipeline
+name: stage-0
+
+steps:
+- name: show-files
+  image: alpine
+  commands:
+    - /bin/sh -ex | ls -R
+
+---
+kind: pipeline
+name: stage-1
+
+step:
+- name: pdfid
+  image: cincan/pdfid
+  commands:
+    - sh results/pdfid.sh
+
+- name: peepdf
+  image: cincan/peepdf
+  commands:
+    - /bin/bash results/peepdf-vt.sh
+
+depends_on:
+  - stage-0
+---
+kind: pipeline
+name: stage-2
+
+step:
+- name: jsunpackn
+  image: cincan/jsunpack-n
+  commands:
+    - /bin/bash/ results/jsunpackn.sh
+
+depends_on:
+  - stage-1
+---
+kind: pipeline
+name: stage-3
+
+step:
+- name: sctest
+  image: cincan/peepdf
+  commands:
+    - /bin/bash/ results/sctest.sh
+
+depends_on:
+  - stage-2
+---
