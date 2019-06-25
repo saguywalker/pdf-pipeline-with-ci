@@ -1,5 +1,5 @@
 kind: pipeline
-name: pdf-pipeline
+name: stage-0
 
 steps:
 - name: show-files
@@ -7,6 +7,11 @@ steps:
   commands:
     - /bin/sh -ex | ls -R
 
+---
+kind: pipeline
+name: stage-1
+
+step:
 - name: job-pdfid
   #image: cincan/pdfid
   environment:
@@ -27,12 +32,31 @@ steps:
     - docker pull cincan/peepdf
     - docker run -v "${PWD}:/pdf-source" -e SSH_PRIV_KEY="${SSH_PRIV_KEY}" -e GITLAB_USER_EMAIL="${DRONE_COMMIT_AUTHOR_EMAIL}" -e GITLAB_USER_ID="${DRONE_COMMIT_AUTHOR_NAME}" --entrypoint "/bin/bash" cincan/peepdf /pdf-source/peepdf-vt.sh
 
+depends_on:
+  - stage-0
+
+---
+kind: pipeline
+name: stage-2
+
+step:
 - name: jsunpackn
   #image: cincan/jsunpack-n
   commands:
     - /bin/bash/ results/jsunpackn.sh
 
+depends_on:
+  - stage-1
+
+---
+kind: pipeline
+name: stage-3
+
+step:
 - name: sctest
   #image: cincan/peepdf
   commands:
     - /bin/bash/ results/sctest.sh
+
+depends_on:
+  - stage-2
