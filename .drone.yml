@@ -14,6 +14,7 @@ name: stage-1
 step:
 - name: pdfid
   image: cincan/pdfid
+  entrypoint: ["/usr/bin/python","pdfid/pdfid.py"]
   commands:
     - sh results/pdfid.sh
 
@@ -32,6 +33,7 @@ name: stage-2
 step:
 - name: jsunpackn
   image: cincan/jsunpack-n
+  entrypoint: ["/usr/bin/python","/peepdf/peepdf.py"]
   commands:
     - /bin/bash/ results/jsunpackn.sh
 
