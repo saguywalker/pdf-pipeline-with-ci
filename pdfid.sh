@@ -1,6 +1,7 @@
 #!/bin/bash
 SAMPLESPATH=$(pwd)
 #ls $SAMPLESPATH/pdf-source/ -R
+apk update && apk add openssh
 ls $SAMPLESPATH/pdf/ -R
 git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAI}"
 git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
