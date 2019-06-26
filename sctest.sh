@@ -1,6 +1,11 @@
 #!/bin/bash
 #git clone results output-files
 
+eval $(ssh-agent -s)
+mkdir -p ~/.ssh
+echo "$SSH_PRIV_KEY" | ssh-add -
+echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
 OUTPUTPATH=$(pwd)/results
 #OUTPUTPATH=$(pwd)/output-files/results
 ORIGSAMPLESPATH=$(pwd)
@@ -18,7 +23,7 @@ else
 
 	    for file in $SAMPLESPATH/*
 	        do
-	        xbase=${file##*/}; xfext=${xbase##*.}; xpref=${xbase%.*}
+	        xbase=${file##*}; xfext=${xbase##*.}; xpref=${xbase%.*}
 
 		echo $(basename $SAMPLESPATH)/$xbase Results: >> $OUTPUTPATH/sctest_log
 		/usr/bin/python peepdf.py $file -f --command="sctest file ${file}" >> $OUTPUTPATH/sctest_log
