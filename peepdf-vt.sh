@@ -29,7 +29,7 @@ else
 	#git clone results output-files
 
 	#cd $SAMPLESPATH/output-files
-	cp $SAMPLESPATH/*.log $SAMPLESPATH/results/
+	mv $SAMPLESPATH/*.log $SAMPLESPATH/results/
 	#cp $SAMPLESPATH/*.log $SAMPLESPATH/output-files/results/
 
 	#git pull

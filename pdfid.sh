@@ -53,7 +53,7 @@ else
 	echo "number of samples: $number_of_files" | tee -a $SAMPLESPATH/pdfid.log
 
 	#cp $SAMPLESPATH/*.log $SAMPLESPATH/output-files/results/
-	cp $SAMPLESPATH/*.log $SAMPLESPATH/results/
+	mv $SAMPLESPATH/*.log $SAMPLESPATH/results/
   git add .
 	git commit -m "[ci skip] update pdfid results"
 #  git push origin master
