@@ -1,0 +1,32 @@
+PDFiD 0.2.5 /drone/src/pdf/pdf-with-shellcode.pdf
+ PDF Header: %PDF-1.5
+ obj                    6
+ endobj                 6
+ stream                 1
+ endstream              1
+ xref                   1
+ trailer                1
+ startxref              1
+ /Page                  1(1)
+ /Encrypt               0
+ /ObjStm                0
+ /JS                    1(1)
+ /JavaScript            1(1)
+ /AA                    0
+ /OpenAction            1(1)
+ /AcroForm              0
+ /JBIG2Decode           0
+ /RichMedia             0
+ /Launch                0
+ /EmbeddedFile          0
+ /XFA                   0
+ /URI                   0
+ /Colors > 2^24         0
+
+Triage plugin score:        1.00
+Triage plugin instructions: Sample is likely malicious and requires further analysis
+Results:
+Malicious: 1
+Clean: 
+Requires further analysis: 
+number of samples: 1
