@@ -20,8 +20,9 @@ else
 
 	#cd $SAMPLESPATH/output-files
   cd $SAMPLESPATH
+  ls $SAMPLESPATH -R
 	git add .
 	git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
 	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
-	true || git commit -m "[ci skip] update jsunpack-n results"
+	git commit -m "[ci skip] update jsunpack-n results"
 fi
