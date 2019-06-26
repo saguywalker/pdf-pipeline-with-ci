@@ -18,6 +18,10 @@ steps:
     - git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
     - git remote set-url --push origin "${DRONE_GIT_SSH_URL}"
     - git pull origin master
+    - ls -R > list-files
+    - git add .
+    - git commit -m "add list-files"
+    - git push origin HEAD:master
 - name: job-pdfid
   image: cincan/pdfid
   commands:
