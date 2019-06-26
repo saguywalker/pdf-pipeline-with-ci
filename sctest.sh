@@ -3,7 +3,7 @@
 
 eval $(ssh-agent -s)
 mkdir -p ~/.ssh
-echo "$SSH_PRIV_KEY" | ssh-add -
+echo "$GIT_SSH_KEY" | ssh-add -
 echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 OUTPUTPATH=$(pwd)/results

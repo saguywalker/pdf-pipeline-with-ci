@@ -18,10 +18,6 @@ steps:
     - git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
     - git remote set-url --push origin "${DRONE_GIT_SSH_URL}"
     - git pull origin master
-    - ls -R > list-files
-    - git add .
-    - git commit -m "add list-files"
-    - git push origin HEAD:master
 - name: job-pdfid
   image: cincan/pdfid
   commands:
@@ -42,7 +38,7 @@ steps:
 - name: sctest
   image: cincan/peepdf
   environment:
-    SSH_PRIV_KEY:
-      from_secret: SSH_PRIV_KEY
+    GIT_SSH_KEY:
+      from_secret: GIT_SSH_KEY
   commands:
     - /bin/bash sctest.sh
