@@ -37,7 +37,7 @@ else
 	git add .
   git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
 	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
-	true || git commit -m "Results update"
+	true || git commit -m "[ci skip] Results update"
   git config --global push.default matching
   git push
 fi

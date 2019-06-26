@@ -55,6 +55,6 @@ else
 	#cp $SAMPLESPATH/*.log $SAMPLESPATH/output-files/results/
 	cp $SAMPLESPATH/*.log $SAMPLESPATH/results/
   git add .
-	git commit -m "update pdfid results"
+	git commit -m "[ci skip] update pdfid results"
 #  git push origin master
 fi

@@ -36,7 +36,7 @@ else
 	git add .
 	#git config --global user.name "${GITLAB_USER_ID}"
 	#git config --global user.email "${GITLAB_USER_EMAIL}"
-	git commit -m "update peepdf results"
+	git commit -m "[ci skip] update peepdf results"
  # git push origin master
 fi
 

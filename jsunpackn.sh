@@ -23,5 +23,5 @@ else
 	git add .
 	git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
 	git config --global user.email "${DRONE_COMMIT_AUTHOR_EMAIL}"
-	true || git commit -m "update jsunpack-n results"
+	true || git commit -m "[ci skip] update jsunpack-n results"
 fi
