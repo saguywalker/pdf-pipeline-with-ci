@@ -43,4 +43,4 @@ steps:
       from_secret: GIT_SSH_KEY
   commands:
     - /bin/bash sctest.sh
-  depends_on: [sctest]
+  depends_on: [jsunpackn]
