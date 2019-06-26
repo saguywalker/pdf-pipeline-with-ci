@@ -14,11 +14,11 @@ ORIGSAMPLESPATH=$(pwd)
 if [[ "$(ls $ORIGSAMPLESPATH/results/shellcode |wc -l)" == 0 ]]; then
 	echo "Folder is empty"
 else
-	for folder in $ORIGSAMPLESPATH/results/shellcode/*
+	for folder in $ORIGSAMPLESPATH/results/shellcode/*/
 	  do
 	    printf "Working on folder: "${folder}"\n" >> $OUTPUTPATH/sctest_log
 
-	    SAMPLESPATH=${folder}
+	    SAMPLESPATH=${folder%?}
 	    cd /peepdf
 
 	    for file in $SAMPLESPATH/*
