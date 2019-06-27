@@ -15,6 +15,7 @@ pipeline{
             agent{
                 docker{
                     image 'cincan/pdfid'
+                    args '-it --entrypoint=/bin/sh'
                 }
             }
             steps{
@@ -25,30 +26,33 @@ pipeline{
             agent{
                 docker{
                     image 'cincan/peepdf'
+                    args '-it --entrypoint=/bin/bash'
                 }
             }
             steps{
-                bash 'peepdf-vt.sh'
+                sh 'peepdf-vt.sh'
             }
         }
         stage('Job-jsunpackn'){
             agent{
                 docker{
                     image 'cincan/jsunpack-n'
+                    args '-it --entrypoint=/bin/bash'
                 }
             }
             steps{
-                bash 'jsunpackn.sh'
+                sh 'jsunpackn.sh'
             }
         }
         stage('Job sctest'){
             agent{
                 docker{
                     image 'cincan/peepdf'
+                    args '-it --entrypoint=/bin/bash'
                 }
             }
             steps{
-                bash 'jsunpack-n'
+                sh 'jsunpack-n'
             }
         }
     }
