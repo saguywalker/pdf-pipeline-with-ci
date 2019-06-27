@@ -18,7 +18,7 @@ pipeline{
                 }
             }
             steps{
-                /bin/sh pdfid.sh
+                sh 'pdfid.sh'
             }
         }
         stage('Job-peepdf'){
@@ -28,7 +28,7 @@ pipeline{
                 }
             }
             steps{
-                /bin/bash peepdf-vt.sh
+                bash 'peepdf-vt.sh'
             }
         }
         stage('Job-jsunpackn'){
@@ -38,7 +38,7 @@ pipeline{
                 }
             }
             steps{
-                /bin/bash jsunpackn.sh
+                bash 'jsunpackn.sh'
             }
         }
         stage('Job sctest'){
@@ -48,7 +48,7 @@ pipeline{
                 }
             }
             steps{
-                /bin/bash jsunpack-n
+                bash 'jsunpack-n'
             }
         }
     }
