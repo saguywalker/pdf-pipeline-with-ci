@@ -1,3 +1,5 @@
+#!groovy
+
 pipeline{
     agent none
     stages{
@@ -11,7 +13,7 @@ pipeline{
                 sh 'ls -R'
             }
         }
-        stage('Job-pdfid'){
+/*        stage('Job-pdfid'){
             agent{
                 docker{
                     image 'cincan/pdfid'
@@ -21,7 +23,7 @@ pipeline{
             steps{
                 sh 'pdfid.sh'
             }
-        }
+        }*/
         stage('Job-peepdf'){
             agent{
                 docker{
