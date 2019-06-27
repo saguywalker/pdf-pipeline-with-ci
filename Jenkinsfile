@@ -11,28 +11,26 @@ pipeline{
                 sh 'ls -R'
             }
         }
-        parallel{
-            stage('Job-pdfid'){
-                agent{
-                    docker{
-                        image 'cincan/pdfid'
-                    }
-                }
-                steps{
-                    sh 'ls -R'
-                    sh '/bin/sh pdfid.sh'
+        stage('Job-pdfid'){
+            agent{
+                docker{
+                    image 'cincan/pdfid'
                 }
             }
-            stage('Job-peepdf'){
-                agent{
-                    docker{
-                        image 'cincan/peepdf'
-                    }
+            steps{
+                sh 'ls -R'
+                sh '/bin/sh pdfid.sh'
+            }
+        }
+        stage('Job-peepdf'){
+            agent{
+                docker{
+                    image 'cincan/peepdf'
                 }
-                steps{
-                    sh 'ls -R'
-                    sh '/bin/bash peepdf-vt.sh'
-                }
+            }
+            steps{
+                sh 'ls -R'
+                sh '/bin/bash peepdf-vt.sh'
             }
         }
         stage('Job-jsunpackn'){
