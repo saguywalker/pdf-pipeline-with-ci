@@ -18,7 +18,6 @@ pipeline{
                 }
             }
             steps{
-                sh 'ls -R'
                 sh '/bin/sh pdfid.sh'
             }
         }
@@ -29,7 +28,6 @@ pipeline{
                 }
             }
             steps{
-                sh 'ls -R'
                 sh '/bin/bash peepdf-vt.sh'
             }
         }
@@ -40,7 +38,6 @@ pipeline{
                 }
             }
             steps{
-                sh 'ls -R'
                 sh '/bin/bash jsunpackn.sh'
             }
         }
@@ -51,7 +48,6 @@ pipeline{
                 }
             }
             steps{
-                sh 'ls -R'
                 sh '/bin/bash jsunpack-n'
             }
         }
