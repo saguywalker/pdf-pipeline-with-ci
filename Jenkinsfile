@@ -13,7 +13,7 @@ pipeline{
                 sh 'ls -R'
             }
         }
-/*        stage('Job-pdfid'){
+        stage('Job-pdfid'){
             agent{
                 docker{
                     image 'cincan/pdfid'
@@ -21,9 +21,9 @@ pipeline{
                 }
             }
             steps{
-                sh 'pdfid.sh'
+                sh '/bin/sh pdfid.sh'
             }
-        }*/
+        }
         stage('Job-peepdf'){
             agent{
                 docker{
@@ -32,7 +32,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'peepdf-vt.sh'
+                sh '/bin/bash peepdf-vt.sh'
             }
         }
         stage('Job-jsunpackn'){
@@ -43,7 +43,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'jsunpackn.sh'
+                sh '/bin/bash jsunpackn.sh'
             }
         }
         stage('Job sctest'){
@@ -54,7 +54,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'jsunpack-n'
+                sh '/bin/bash jsunpack-n'
             }
         }
     }
