@@ -18,11 +18,18 @@ steps:
     - git config --global user.name "${DRONE_COMMIT_AUTHOR_NAME}"
     - git remote set-url --push origin "${DRONE_GIT_SSH_URL}"
     - git pull origin master
+  when:
+    branch:
+      - droneci
+
 - name: job-pdfid
   image: cincan/pdfid
   commands:
     - ls -R
     - /bin/sh pdfid.sh
+  when:
+    branch:
+      - droneci
   depends_on: [show-files]
 
 - name: job-peepdf
@@ -30,12 +37,18 @@ steps:
   commands:
     - ls -R
     - /bin/bash peepdf-vt.sh
+  when:
+    branch:
+      - droneci
   depends_on: [show-files]
 
 - name: jsunpackn
   image: cincan/jsunpack-n
   commands:
     - /bin/bash jsunpackn.sh
+  when:
+    branch:
+      - droneci
   depends_on: [job-pdfid, job-peepdf]
 
 - name: sctest
@@ -44,5 +57,8 @@ steps:
     GIT_SSH_KEY:
       from_secret: GIT_SSH_KEY
   commands:
-    - /bin/bash sctest.sh
+    - /bin/bash sctest.sh\
+  when:
+    branch:
+      droneci
   depends_on: [jsunpackn]
